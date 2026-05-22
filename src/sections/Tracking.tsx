@@ -68,7 +68,7 @@ export default function Tracking() {
               <div className="absolute left-4 top-0 h-full w-0.5 bg-[#F26500]/10" />
               {steps.map((s, i) => (
                 <div key={s.label} className="relative flex gap-5 pb-8 last:pb-0">
-                  <div className="relative z-10 flex h-8 w-8 items-center justify-center border-2 bg-white" style={{ borderColor: "#F26500" }}>
+                  <div className="relative z-10 flex h-8 w-8 items-center justify-center border-2 bg-[#0d0e0d]" style={{ borderColor: "#F26500" }}>
                     {s.icon}
                   </div>
                   <div className="flex-1 pt-1">

@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0d0e0d]/90 backdrop-blur-lg border-b border-white/5">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6">
         <a href="#" className="flex items-center gap-3">
-          <img src="/logo.svg" alt="SULFUR" className="h-8 w-auto" />
+          <img src="/logo.svg" alt="SULFUR" className="h-8 w-auto brightness-0 invert" />
         </a>
         <div className="hidden items-center gap-8 md:flex">
           <a href="#servicos" className="text-[11px] font-bold tracking-[0.12em] uppercase text-white/40 transition-colors hover:text-[#F26500]">Serviços</a>

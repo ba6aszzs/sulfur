@@ -22,7 +22,7 @@
 @layer base {
   * { -webkit-tap-highlight-color: transparent; }
   body {
-    background-color: #f5f5f5;
+    background-color: #0d0e0d;
     color: #f5f5f5;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
