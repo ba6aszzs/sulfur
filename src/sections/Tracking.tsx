@@ -44,19 +44,19 @@ export default function Tracking() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-10 text-center sm:mb-12">
           <span className="mb-1.5 inline-block text-[10px] font-bold tracking-[0.3em] uppercase text-[#F26500]">Rastreio</span>
-          <h2 className="font-display text-2xl font-black uppercase tracking-[-0.02em] sm:text-3xl md:text-4xl text-[#0d0e0d]">
+          <h2 className="font-display text-2xl font-black uppercase tracking-[-0.02em] sm:text-3xl md:text-4xl text-white">
             Sua carga <span className="text-[#F26500]">na palma da mão</span>
           </h2>
-          <p className="mt-2 text-sm text-[#0d0e0d]/50">Acompanhe cada etapa com rastreamento em tempo real</p>
+          <p className="mt-2 text-sm text-white/50">Acompanhe cada etapa com rastreamento em tempo real</p>
         </div>
 
         <div className="mx-auto max-w-4xl">
           {/* Mock tracking interface */}
-          <div className="border bg-white/60 p-6 sm:p-10" style={{ borderColor: "var(--line)" }}>
+          <div className="border bg-white/5 p-6 sm:p-10" style={{ borderColor: "var(--line)" }}>
             <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
               <div>
                 <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#F26500]/60">Código de Rastreio</p>
-                <p className="font-display text-lg font-black tracking-wider text-[#0d0e0d]">SUL-2025-04837</p>
+                <p className="font-display text-lg font-black tracking-wider text-white">SUL-2025-04837</p>
               </div>
               <div className="flex items-center gap-2 border px-4 py-2" style={{ borderColor: "var(--line)" }}>
                 <span className="h-2 w-2 rounded-full bg-[#22C55E] animate-pulse" />
@@ -75,9 +75,9 @@ export default function Tracking() {
                     <div className="flex items-center gap-2">
                       <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#F26500]/40">ETAPA {i + 1}</span>
                       <svg viewBox="0 0 24 24" className="h-3 w-3 text-[#F26500]/30" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12,2 22,22 2,22" /></svg>
-                      <h4 className="text-xs font-black uppercase text-[#0d0e0d]">{s.label}</h4>
+                      <h4 className="text-xs font-black uppercase text-white">{s.label}</h4>
                     </div>
-                    <p className="mt-0.5 text-xs leading-relaxed text-[#0d0e0d]/50">{s.desc}</p>
+                    <p className="mt-0.5 text-xs leading-relaxed text-white/50">{s.desc}</p>
                   </div>
                 </div>
               ))}

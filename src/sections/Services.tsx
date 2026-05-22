@@ -58,13 +58,13 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-10 text-center sm:mb-12">
           <div className="mb-1.5 text-[10px] font-bold tracking-[0.3em] uppercase text-[#F26500]">Serviços</div>
-          <h2 className="font-display text-2xl font-black uppercase tracking-[-0.02em] sm:text-3xl md:text-4xl text-[#0d0e0d]">
+          <h2 className="font-display text-2xl font-black uppercase tracking-[-0.02em] sm:text-3xl md:text-4xl text-white">
             Soluções completas<br /><span className="text-[#F26500]">para sua logística</span>
           </h2>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <div key={s.title} className="group relative overflow-hidden border bg-white/60 px-6 py-8 text-center transition-all sm:px-8 sm:py-10" style={{ borderColor: "var(--line)" }}>
+            <div key={s.title} className="group relative overflow-hidden border bg-white/5 px-6 py-8 text-center transition-all sm:px-8 sm:py-10" style={{ borderColor: "var(--line)" }}>
               {/* Hexagonal background decor */}
               <svg viewBox="0 0 80 70" className="pointer-events-none absolute -right-6 -top-6 h-20 w-20 text-[#F26500]/5" fill="currentColor">
                 <polygon points="40,2 78,18 78,52 40,68 2,52 2,18" />
@@ -77,8 +77,8 @@ export default function Services() {
               </div>
 
               <span className="mb-2 inline-block text-[10px] font-bold tracking-[0.2em] uppercase text-[#F26500]/60">{s.tag}</span>
-              <h3 className="font-display text-lg font-black uppercase text-[#0d0e0d]">{s.title}</h3>
-              <p className="mt-2 text-xs leading-relaxed sm:text-sm text-[#0d0e0d]/50">{s.desc}</p>
+              <h3 className="font-display text-lg font-black uppercase text-white">{s.title}</h3>
+              <p className="mt-2 text-xs leading-relaxed sm:text-sm text-white/50">{s.desc}</p>
             </div>
           ))}
         </div>

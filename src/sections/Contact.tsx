@@ -5,10 +5,10 @@ export default function Contact() {
     <section className="mx-4 mb-12 border sm:mx-6 sm:mb-16 lg:mx-auto lg:max-w-7xl lg:px-6" style={{ borderColor: "var(--line)", backgroundColor: "var(--bg)" }}>
       <div className="px-6 py-12 text-center sm:px-12 sm:py-16">
         <span className="mb-1.5 inline-block text-[10px] font-bold tracking-[0.3em] uppercase text-[#F26500]">Contato</span>
-        <h2 className="font-display text-xl font-black uppercase tracking-[-0.02em] sm:text-2xl md:text-3xl text-[#0d0e0d]">
+        <h2 className="font-display text-xl font-black uppercase tracking-[-0.02em] sm:text-2xl md:text-3xl text-white">
           Vamos<br /><span className="text-[#F26500]">conversar</span>
         </h2>
-        <div className="mt-5 flex flex-col items-center gap-2 text-xs sm:text-sm text-[#0d0e0d]/50">
+        <div className="mt-5 flex flex-col items-center gap-2 text-xs sm:text-sm text-white/50">
           <p className="flex items-center gap-2">
             <Mail className="size-3.5 text-[#F26500]" /> contato@sulfurlogistica.com.br
           </p>

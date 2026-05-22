@@ -2,10 +2,10 @@ export default function Delivery() {
   return (
     <section className="relative overflow-hidden border-y" style={{ borderColor: "var(--line)" }} id="delivery">
       <div className="flex min-h-[70vh] flex-col-reverse lg:flex-row">
-        {/* Left — white */}
-        <div className="flex w-full items-center justify-center bg-white px-8 py-16 lg:w-1/2 lg:py-0">
+        {/* Left — dark */}
+        <div className="flex w-full items-center justify-center bg-[#0d0e0d] px-8 py-16 lg:w-1/2 lg:py-0">
           <div className="max-w-lg">
-            <div className="mb-8 flex items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-[#0d0e0d]/30">
+            <div className="mb-8 flex items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/30">
               <span>Home</span>
               <span className="text-[#F26500]">Info</span>
               <span>Service</span>
@@ -15,10 +15,10 @@ export default function Delivery() {
               </span>
             </div>
 
-            <h1 className="font-display text-[clamp(2.2rem,6vw,3.8rem)] font-black leading-[0.95] tracking-[-0.03em] text-[#0d0e0d]">
+            <h1 className="font-display text-[clamp(2.2rem,6vw,3.8rem)] font-black leading-[0.95] tracking-[-0.03em] text-white">
               DELIVERY<br />SERVICE
             </h1>
-            <p className="mt-5 max-w-md text-sm leading-relaxed text-[#0d0e0d]/50">
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-white/50">
               Soluções completas de entrega para sua empresa. Da última milha à distribuição 
               regional, nossa frota inteligente garante que seus produtos cheguem ao destino 
               com rapidez, segurança e rastreamento em tempo real.
@@ -37,7 +37,7 @@ export default function Delivery() {
           {/* Slope divider */}
           <div className="pointer-events-none absolute -left-20 top-0 bottom-0 z-10 hidden w-20 lg:block">
             <svg viewBox="0 0 80 1000" className="h-full w-full" preserveAspectRatio="none">
-              <path d="M80 0 L0 0 L80 1000 L80 0Z" fill="white" />
+              <path d="M80 0 L0 0 L80 1000 L80 0Z" fill="#0d0e0d" />
             </svg>
           </div>
           <img

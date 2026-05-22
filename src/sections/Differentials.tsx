@@ -55,20 +55,20 @@ export default function Differentials() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-10 text-center sm:mb-12">
           <span className="mb-1.5 inline-block text-[10px] font-bold tracking-[0.3em] uppercase text-[#F26500]">Diferenciais</span>
-          <h2 className="font-display text-2xl font-black uppercase tracking-[-0.02em] sm:text-3xl md:text-4xl text-[#0d0e0d]">
+          <h2 className="font-display text-2xl font-black uppercase tracking-[-0.02em] sm:text-3xl md:text-4xl text-white">
             Por que <span className="text-[#F26500]">SULFUR</span>
           </h2>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {diffs.map((d) => (
-            <div key={d.title} className="group border bg-white/60 px-5 py-8 text-center transition-all hover:-translate-y-0.5 sm:px-6 sm:py-10" style={{ borderColor: "var(--line)" }}>
+            <div key={d.title} className="group border bg-white/5 px-5 py-8 text-center transition-all hover:-translate-y-0.5 sm:px-6 sm:py-10" style={{ borderColor: "var(--line)" }}>
               <div className="mb-4 flex justify-center">
                 <div className="flex h-12 w-12 items-center justify-center border-2 border-[#F26500]/10" style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}>
                   {d.icon}
                 </div>
               </div>
-              <h3 className="font-display text-base font-black uppercase text-[#0d0e0d]">{d.title}</h3>
-              <p className="mt-2 text-xs leading-relaxed sm:text-sm text-[#0d0e0d]/50">{d.desc}</p>
+              <h3 className="font-display text-base font-black uppercase text-white">{d.title}</h3>
+              <p className="mt-2 text-xs leading-relaxed sm:text-sm text-white/50">{d.desc}</p>
             </div>
           ))}
         </div>

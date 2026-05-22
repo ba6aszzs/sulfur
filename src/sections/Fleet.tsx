@@ -40,10 +40,10 @@ export default function Fleet() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-10 text-center sm:mb-12">
           <span className="mb-1.5 inline-block text-[10px] font-bold tracking-[0.3em] uppercase text-[#F26500]">Frota</span>
-          <h2 className="font-display text-2xl font-black uppercase tracking-[-0.02em] sm:text-3xl md:text-4xl text-[#0d0e0d]">
+          <h2 className="font-display text-2xl font-black uppercase tracking-[-0.02em] sm:text-3xl md:text-4xl text-white">
             Nossos <span className="text-[#F26500]">veículos</span>
           </h2>
-          <p className="mt-2 text-sm text-[#0d0e0d]/50">+120 caminhões próprios em operação nacional</p>
+          <p className="mt-2 text-sm text-white/50">+120 caminhões próprios em operação nacional</p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -54,7 +54,7 @@ export default function Fleet() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
-              className="group bg-white/60 border transition-all hover:-translate-y-1" style={{ borderColor: "var(--line)" }}
+              className="group bg-white/5 border transition-all hover:-translate-y-1" style={{ borderColor: "var(--line)" }}
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={t.img} alt={t.type} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
@@ -62,8 +62,8 @@ export default function Fleet() {
               <div className="flex items-start gap-2 border-t px-5 py-4" style={{ borderColor: "var(--line)" }}>
                 <svg viewBox="0 0 24 24" className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#F26500]" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12,2 22,22 2,22" /></svg>
                 <div>
-                  <h3 className="font-display text-sm font-black uppercase text-[#0d0e0d]">{t.type}</h3>
-                  <p className="mt-0.5 text-xs leading-relaxed text-[#0d0e0d]/50">{t.desc}</p>
+                  <h3 className="font-display text-sm font-black uppercase text-white">{t.type}</h3>
+                  <p className="mt-0.5 text-xs leading-relaxed text-white/50">{t.desc}</p>
                 </div>
               </div>
             </motion.div>

@@ -20,7 +20,7 @@ function Triangle({ className, color = "#F26500" }: { className?: string; color?
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-[#F3F4F6]">
+    <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-[#0d0e0d]">
       {/* Hexagonal pattern background */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.04]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='52' viewBox='0 0 60 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='30,2 58,16 58,44 30,52 2,44 2,16' fill='none' stroke='%23F26500' stroke-width='1'/%3E%3C/svg%3E")`,
@@ -44,10 +44,10 @@ export default function Hero() {
             <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#F26500]" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12,2 22,22 2,22" /></svg>
             <span className="h-0.5 w-8 bg-[#F26500]" />
           </div>
-          <h1 className="font-display text-[clamp(3rem,13vw,6rem)] font-black leading-[0.85] tracking-[-0.04em] uppercase text-[#0d0e0d]">
+          <h1 className="font-display text-[clamp(3rem,13vw,6rem)] font-black leading-[0.85] tracking-[-0.04em] uppercase text-white">
             SULFUR
           </h1>
-          <p className="mt-5 max-w-xl text-sm leading-relaxed sm:text-base text-[#0d0e0d]/50">
+          <p className="mt-5 max-w-xl text-sm leading-relaxed sm:text-base text-white/50">
             Galpões condominiais, operação 3PL e armazéns alfandegados. Soluções logísticas completas para sua empresa crescer sem gargalos.
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -55,7 +55,7 @@ export default function Hero() {
               <svg viewBox="0 0 24 24" className="h-4 w-4 fill-white"><polygon points="12,2 22,22 2,22" /></svg>
               VER SERVIÇOS
             </a>
-            <a href="https://wa.me/5547XXXXXXXX" className="inline-flex min-h-12 items-center justify-center border-2 px-8 text-xs font-bold tracking-[0.12em] uppercase transition-all sm:min-h-0 sm:py-3.5" style={{ borderColor: "rgba(0,0,0,0.08)", color: "rgba(0,0,0,0.4)" }}>
+            <a href="https://wa.me/5547XXXXXXXX" className="inline-flex min-h-12 items-center justify-center border-2 px-8 text-xs font-bold tracking-[0.12em] uppercase transition-all sm:min-h-0 sm:py-3.5" style={{ borderColor: "rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.6)" }}>
               SOLICITAR ORÇAMENTO
             </a>
           </div>
