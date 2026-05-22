@@ -14,6 +14,7 @@ export default function Navbar() {
           <a href="#frota" className="text-[11px] font-bold tracking-[0.12em] uppercase text-white/40 transition-colors hover:text-[#F26500]">Frota</a>
           <a href="#rastreio" className="text-[11px] font-bold tracking-[0.12em] uppercase text-white/40 transition-colors hover:text-[#F26500]">Rastreio</a>
           <a href="#cobertura" className="text-[11px] font-bold tracking-[0.12em] uppercase text-white/40 transition-colors hover:text-[#F26500]">Cobertura</a>
+          <a href="#galpoes" className="text-[11px] font-bold tracking-[0.12em] uppercase text-white/40 transition-colors hover:text-[#F26500]">Galpões</a>
           <a href="#delivery" className="text-[11px] font-bold tracking-[0.12em] uppercase text-white/40 transition-colors hover:text-[#F26500]">Delivery</a>
           <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#F26500]/30" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2l3 6 6 3-6 3-3 6-3-6-6-3 6-3z"/></svg>
           <a href="https://wa.me/5547XXXXXXXX" className="bg-[#F26500] px-5 py-2.5 text-[11px] font-bold tracking-[0.12em] uppercase text-white transition-all hover:bg-[#D95400]">COTAR</a>
@@ -34,6 +35,7 @@ export default function Navbar() {
               <a href="#frota" onClick={() => setOpen(false)} className="flex min-h-11 items-center rounded px-4 text-[11px] font-bold tracking-[0.12em] uppercase text-white/40">Frota</a>
               <a href="#rastreio" onClick={() => setOpen(false)} className="flex min-h-11 items-center rounded px-4 text-[11px] font-bold tracking-[0.12em] uppercase text-white/40">Rastreio</a>
               <a href="#cobertura" onClick={() => setOpen(false)} className="flex min-h-11 items-center rounded px-4 text-[11px] font-bold tracking-[0.12em] uppercase text-white/40">Cobertura</a>
+              <a href="#galpoes" onClick={() => setOpen(false)} className="flex min-h-11 items-center rounded px-4 text-[11px] font-bold tracking-[0.12em] uppercase text-white/40">Galpões</a>
               <a href="#delivery" onClick={() => setOpen(false)} className="flex min-h-11 items-center rounded px-4 text-[11px] font-bold tracking-[0.12em] uppercase text-white/40">Delivery</a>
               <a href="https://wa.me/5547XXXXXXXX" className="mt-2 flex min-h-11 items-center justify-center bg-[#F26500] px-4 text-[11px] font-bold tracking-[0.12em] uppercase text-white">COTAR</a>
             </div>

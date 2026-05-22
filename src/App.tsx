@@ -8,6 +8,7 @@ import Fleet from "@/sections/Fleet"
 import Tracking from "@/sections/Tracking"
 import Delivery from "@/sections/Delivery"
 import Coverage from "@/sections/Coverage"
+import Galpoes from "@/sections/Galpoes"
 import SFIJ11 from "@/sections/SFIJ11"
 import About from "@/sections/About"
 import Differentials from "@/sections/Differentials"
@@ -24,6 +25,7 @@ export default function App() {
       <Tracking />
       <Delivery />
       <Coverage />
+      <Galpoes />
       <SFIJ11 />
       <About />
       <Differentials />

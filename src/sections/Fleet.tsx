@@ -15,7 +15,7 @@ const trucks = [
   {
     type: "Carga Perigosa",
     desc: "Frota certificada MOP para transporte de produtos químicos e inflamáveis. Equipamentos com rastreamento em tempo real e sensores de pressão/temperatura.",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&auto=format",
+    img: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop&auto=format",
   },
   {
     type: "Última Milha",
