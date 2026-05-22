@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 140" fill="none">
   <defs>
     <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#F59E0B"/>
-      <stop offset="100%" stop-color="#FBBF24"/>
+      <stop offset="0%" stop-color="#F26500"/>
+      <stop offset="100%" stop-color="#F26500"/>
     </linearGradient>
   </defs>
   <g transform="translate(30, 20)">
-    <rect x="16" y="30" width="68" height="40" rx="4" stroke="#F59E0B" stroke-width="2.5" fill="none"/>
-    <path d="M12 58 L50 22 L88 58" stroke="#F59E0B" stroke-width="2" fill="none" opacity="0.3"/>
-    <circle cx="50" cy="50" r="8" fill="#F59E0B"/>
+    <rect x="16" y="30" width="68" height="40" rx="4" stroke="#F26500" stroke-width="2.5" fill="none"/>
+    <path d="M12 58 L50 22 L88 58" stroke="#F26500" stroke-width="2" fill="none" opacity="0.3"/>
+    <circle cx="50" cy="50" r="8" fill="#F26500"/>
     <line x1="50" y1="50" x2="50" y2="30" stroke="#0d0e0d" stroke-width="2"/>
   </g>
   <text x="115" y="70" font-family="'Maven Pro','Segoe UI',sans-serif" font-size="40" font-weight="900" fill="#0d0e0d" letter-spacing="5">SULFUR</text>
-  <text x="115" y="108" font-family="'Maven Pro','Segoe UI',sans-serif" font-size="14" font-weight="700" fill="#F59E0B" letter-spacing="6">LOGÍSTICA</text>
-  <line x1="115" y1="116" x2="440" y2="116" stroke="#F59E0B" stroke-width="1.5" opacity="0.3"/>
+  <text x="115" y="108" font-family="'Maven Pro','Segoe UI',sans-serif" font-size="14" font-weight="700" fill="#F26500" letter-spacing="6">LOGÍSTICA</text>
+  <line x1="115" y1="116" x2="440" y2="116" stroke="#F26500" stroke-width="1.5" opacity="0.3"/>
 </svg>

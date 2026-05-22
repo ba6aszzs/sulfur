@@ -3,10 +3,10 @@
 @plugin "tailwindcss-animate";
 
 :root {
-  --accent: #0d0e0d;
+  --accent: #F26500;
   --bg: #F3F4F6;
-  --text: #F59E0B;
-  --muted: #F59E0B;
+  --text: #0d0e0d;
+  --muted: #6B7280;
   --line: rgba(0,0,0,0.08);
   --radius: 0;
 }
@@ -23,7 +23,7 @@
   * { -webkit-tap-highlight-color: transparent; }
   body {
     background-color: #F3F4F6;
-    color: #F59E0B;
+    color: #0d0e0d;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
   }
