@@ -7,15 +7,6 @@ const metrics = [
   { value: "98%", label: "Taxa de Ocupação", icon: "M22 12h-4l-3 9L9 3l-3 9H2" },
 ]
 
-const properties = [
-  { name: "Galpão SULFUR Cajamar", city: "Cajamar — SP", area: "45.000 m²", type: "Condominial" },
-  { name: "Galpão SULFUR Extrema", city: "Extrema — MG", area: "32.000 m²", type: "Logístico 3PL" },
-  { name: "Galpão SULFUR Jundiaí", city: "Jundiaí — SP", area: "28.000 m²", type: "Alfandegado" },
-  { name: "Galpão SULFUR Fazenda Rio Grande", city: "Fazenda Rio Grande — PR", area: "22.000 m²", type: "Condominial" },
-  { name: "Galpão SULFUR São José", city: "São José — SC", area: "18.000 m²", type: "Cross-docking" },
-  { name: "Galpão SULFUR Gravataí", city: "Gravataí — RS", area: "15.000 m²", type: "3PL" },
-]
-
 export default function SFIJ11() {
   return (
     <Section className="py-16 sm:py-20" id="sfij11">
@@ -23,7 +14,7 @@ export default function SFIJ11() {
         <div className="mb-10 text-center sm:mb-12">
           <span className="mb-1.5 inline-block text-[10px] font-bold tracking-[0.3em] uppercase text-[#F26500]">Fundo Imobiliário</span>
           <h2 className="font-display text-2xl font-black uppercase tracking-[-0.02em] sm:text-3xl md:text-4xl text-white">
-            <span className="text-[#F26500">SFIJ11</span>
+            <span className="text-[#F26500]">SFIJ11</span>
           </h2>
           <p className="mt-2 text-sm text-white/50">Fundo de Investimento Imobiliário — Galpões Logísticos</p>
         </div>
@@ -35,7 +26,7 @@ export default function SFIJ11() {
             O portfólio é composto por imóveis localizados nos principais corredores logísticos do Brasil, 
             com contratos atípicos (indexados ao IPCA + spread) e locatários de primeira linha.
           </p>
-          <div className="mt-5 flex items-center justify-center gap-2 text-xs text-white/40">
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs text-white/40">
             <span className="inline-block border px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase" style={{ borderColor: "var(--line)" }}>Código: SFIJ11</span>
             <span className="inline-block border px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase" style={{ borderColor: "var(--line)" }}>Segmento: Logística</span>
             <span className="inline-block border px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase" style={{ borderColor: "var(--line)" }}>Prazo: Indeterminado</span>
@@ -59,39 +50,13 @@ export default function SFIJ11() {
           ))}
         </div>
 
-        {/* Properties table */}
-        <div className="mx-auto max-w-4xl">
-          <h3 className="mb-4 text-center text-xs font-bold tracking-[0.2em] uppercase text-white/40">Propriedades do Portfólio</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left text-xs sm:text-sm">
-              <thead>
-                <tr className="border-b" style={{ borderColor: "var(--line)" }}>
-                  <th className="py-3 pr-4 font-display text-[10px] font-black uppercase tracking-[0.15em] text-[#F26500]">Imóvel</th>
-                  <th className="py-3 pr-4 font-display text-[10px] font-black uppercase tracking-[0.15em] text-[#F26500]">Localização</th>
-                  <th className="py-3 pr-4 font-display text-[10px] font-black uppercase tracking-[0.15em] text-[#F26500]">Área</th>
-                  <th className="py-3 font-display text-[10px] font-black uppercase tracking-[0.15em] text-[#F26500]">Tipo</th>
-                </tr>
-              </thead>
-              <tbody>
-                {properties.map((p) => (
-                  <tr key={p.name} className="border-b" style={{ borderColor: "var(--line)" }}>
-                    <td className="py-3 pr-4 font-medium text-white">{p.name}</td>
-                    <td className="py-3 pr-4 text-white/50">{p.city}</td>
-                    <td className="py-3 pr-4 font-semibold text-[#F26500]">{p.area}</td>
-                    <td className="py-3 text-white/50">{p.type}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="mt-6 text-center">
-            <a href="#" className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.15em] uppercase text-[#F26500] transition-colors hover:text-[#D95400]">
-              <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12,2 22,22 2,22" /></svg>
-              BAIXAR APRESENTAÇÃO DO FUNDO
-              <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12,2 22,22 2,22" /></svg>
-            </a>
-          </div>
+        <div className="mt-12 text-center border border-[#F26500]/20 bg-[#F26500]/5 px-6 py-8 sm:py-10">
+          <a href="#galpoes" className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.2em] uppercase text-[#F26500] transition-all hover:text-[#D95400]">
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12,2 22,22 2,22" /></svg>
+            NOSSOS 46 GALPÕES
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12,2 22,22 2,22" /></svg>
+          </a>
+          <p className="mt-2 text-[10px] text-white/40">Conheça todas as unidades SULFUR distribuídas pelo Brasil</p>
         </div>
       </div>
     </Section>

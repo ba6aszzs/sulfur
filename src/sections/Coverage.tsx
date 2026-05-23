@@ -1,69 +1,64 @@
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
+import L from "leaflet"
+import "leaflet/dist/leaflet.css"
 import Section from "@/components/Section"
 
+const sulfurIcon = L.divIcon({
+  className: "",
+  html: `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L8 10l-6 2 6 2 2 6 2-6 6-2-6-2-2-8z" fill="#F26500"/><circle cx="12" cy="10" r="2.5" fill="white"/></svg>`,
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
+  popupAnchor: [0, -12],
+})
+
+const activeIcon = L.divIcon({
+  className: "",
+  html: `<svg viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L8 10l-6 2 6 2 2 6 2-6 6-2-6-2-2-8z" fill="#FBBF24"/><circle cx="12" cy="10" r="2.5" fill="white"/></svg>`,
+  iconSize: [32, 32],
+  iconAnchor: [16, 16],
+  popupAnchor: [0, -16],
+})
+
+const cities = [
+  { name: "Manaus", pos: [-3.1190, -60.0217] as [number, number], region: "Norte", units: "3 unidades" },
+  { name: "Belém", pos: [-1.4558, -48.5031] as [number, number], region: "Norte", units: "2 unidades (1 em implantação)" },
+  { name: "São Luís", pos: [-2.5385, -44.2828] as [number, number], region: "Nordeste", units: "1 unidade" },
+  { name: "Fortaleza", pos: [-3.7172, -38.5433] as [number, number], region: "Nordeste", units: "2 unidades" },
+  { name: "Natal", pos: [-5.7793, -35.2009] as [number, number], region: "Nordeste", units: "1 unidade" },
+  { name: "Recife", pos: [-8.0476, -34.8770] as [number, number], region: "Nordeste", units: "2 unidades" },
+  { name: "Salvador", pos: [-12.9777, -38.5016] as [number, number], region: "Nordeste", units: "2 unidades" },
+  { name: "Brasília", pos: [-15.7801, -47.9292] as [number, number], region: "Centro-Oeste", units: "3 unidades" },
+  { name: "Goiânia", pos: [-16.6799, -49.2550] as [number, number], region: "Centro-Oeste", units: "1 unidade" },
+  { name: "Cuiabá", pos: [-15.6014, -56.0979] as [number, number], region: "Centro-Oeste", units: "1 unidade" },
+  { name: "Campo Grande", pos: [-20.4697, -54.6201] as [number, number], region: "Centro-Oeste", units: "1 unidade" },
+  { name: "Ribeirão Preto", pos: [-21.1699, -47.8101] as [number, number], region: "Sudeste", units: "2 unidades" },
+  { name: "São Paulo", pos: [-23.5505, -46.6333] as [number, number], region: "Sudeste", units: "6 unidades" },
+  { name: "Campinas", pos: [-22.9068, -47.0618] as [number, number], region: "Sudeste", units: "3 unidades" },
+  { name: "Rio de Janeiro", pos: [-22.9068, -43.1729] as [number, number], region: "Sudeste", units: "4 unidades" },
+  { name: "Santos", pos: [-23.9618, -46.3322] as [number, number], region: "Sudeste", units: "2 unidades" },
+  { name: "Curitiba", pos: [-25.4290, -49.2671] as [number, number], region: "Sul", units: "4 unidades" },
+  { name: "Joinville", pos: [-26.3044, -48.8486] as [number, number], region: "Sul", units: "1 unidade" },
+  { name: "Florianópolis", pos: [-27.5945, -48.5589] as [number, number], region: "Sul", units: "4 unidades" },
+  { name: "Porto Alegre", pos: [-30.0346, -51.2177] as [number, number], region: "Sul", units: "3 unidades" },
+]
+
 const regions = [
-  { name: "Sul", cities: "Florianópolis, Curitiba, Porto Alegre, Joinville, Blumenau, Caxias do Sul, São José dos Pinhais", count: 12, active: true, color: "#F26500" },
-  { name: "Sudeste", cities: "São Paulo, Rio de Janeiro, Belo Horizonte, Campinas, Guarulhos, Ribeirão Preto, São José dos Campos, Santos, Uberlândia, Contagem", count: 18, active: true, color: "#F26500" },
-  { name: "Centro-Oeste", cities: "Brasília, Goiânia, Cuiabá, Campo Grande, Anápolis", count: 5, active: true, color: "#F26500" },
-  { name: "Nordeste", cities: "Salvador, Recife, Fortaleza, São Luís, Natal, Maceió, João Pessoa, Aracaju", count: 8, active: true, color: "#F26500" },
-  { name: "Norte", cities: "Manaus, Belém, Porto Velho, Macapá, Palmas", count: 3, active: false, color: "#6B7280" },
+  { name: "Sul", cities: "Florianópolis, Curitiba, Porto Alegre, Joinville, Blumenau, Caxias do Sul, São José dos Pinhais", count: 12, active: true },
+  { name: "Sudeste", cities: "São Paulo, Rio de Janeiro, Belo Horizonte, Campinas, Guarulhos, Ribeirão Preto, São José dos Campos, Santos, Uberlândia, Contagem", count: 18, active: true },
+  { name: "Centro-Oeste", cities: "Brasília, Goiânia, Cuiabá, Campo Grande, Anápolis", count: 5, active: true },
+  { name: "Nordeste", cities: "Salvador, Recife, Fortaleza, São Luís, Natal, Maceió, João Pessoa, Aracaju", count: 8, active: true },
+  { name: "Norte", cities: "Manaus, Belém, Porto Velho, Macapá, Palmas", count: 3, active: false },
 ]
 
 const totalUnits = regions.reduce((acc, r) => acc + r.count, 0)
 
-const pins = [
-  { x: 195, y: 84, label: "Manaus", region: "Norte" },
-  { x: 353, y: 64, label: "Belém", region: "Norte" },
-  { x: 406, y: 79, label: "São Luís", region: "Nordeste" },
-  { x: 479, y: 92, label: "Fortaleza", region: "Nordeste" },
-  { x: 525, y: 112, label: "Natal", region: "Nordeste" },
-  { x: 525, y: 134, label: "Recife", region: "Nordeste" },
-  { x: 479, y: 183, label: "Salvador", region: "Nordeste" },
-  { x: 355, y: 210, label: "Brasília", region: "Centro-Oeste" },
-  { x: 336, y: 219, label: "Goiânia", region: "Centro-Oeste" },
-  { x: 247, y: 208, label: "Cuiabá", region: "Centro-Oeste" },
-  { x: 266, y: 257, label: "Campo Grande", region: "Centro-Oeste" },
-  { x: 356, y: 264, label: "Ribeirão Preto", region: "Sudeste" },
-  { x: 372, y: 287, label: "São Paulo", region: "Sudeste" },
-  { x: 366, y: 282, label: "Campinas", region: "Sudeste" },
-  { x: 417, y: 281, label: "Rio de Janeiro", region: "Sudeste" },
-  { x: 376, y: 291, label: "Santos", region: "Sudeste" },
-  { x: 336, y: 305, label: "Curitiba", region: "Sul" },
-  { x: 343, y: 314, label: "Joinville", region: "Sul" },
-  { x: 347, y: 327, label: "Florianópolis", region: "Sul" },
-  { x: 311, y: 351, label: "Porto Alegre", region: "Sul" },
-]
-
-const unitsByCity: Record<string, string> = {
-  Manaus: "3 unidades",
-  Belém: "2 unidades (1 em implantação)",
-  "São Luís": "1 unidade",
-  Fortaleza: "2 unidades",
-  Natal: "1 unidade",
-  Recife: "2 unidades",
-  Salvador: "2 unidades",
-  Brasília: "3 unidades",
-  Goiânia: "1 unidade",
-  Cuiabá: "1 unidade",
-  "Campo Grande": "1 unidade",
-  "Ribeirão Preto": "2 unidades",
-  "São Paulo": "6 unidades",
-  Campinas: "3 unidades",
-  "Rio de Janeiro": "4 unidades",
-  Santos: "2 unidades",
-  Curitiba: "4 unidades",
-  Joinville: "1 unidade",
-  Florianópolis: "4 unidades",
-  "Porto Alegre": "3 unidades",
-}
-
 export default function Coverage() {
-  const [activePin, setActivePin] = useState<string | null>(null)
   const [activeRegion, setActiveRegion] = useState<string | null>(null)
 
   return (
-    <Section className="overflow-hidden border-y py-16 sm:py-20" style={{ borderColor: "var(--line)", backgroundColor: "var(--bg)" }} id="cobertura">
+    <Section className="overflow-hidden py-16 sm:py-20" style={{ backgroundColor: "var(--bg)" }} id="cobertura">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-10 text-center sm:mb-12">
           <span className="mb-1.5 inline-block text-[10px] font-bold tracking-[0.3em] uppercase text-[#F26500]">Cobertura</span>
@@ -73,121 +68,80 @@ export default function Coverage() {
           <p className="mt-2 text-sm text-white/50">Clique nos pins para detalhes — passe o mouse nas regiões</p>
         </div>
 
-        {/* Interactive map */}
-        <div className="mx-auto mb-12 max-w-3xl">
-          <div className="relative aspect-[4/3] w-full border bg-[#1a1a1a] p-4 sm:p-8" style={{ borderColor: "var(--line)" }}>
-            <svg viewBox="0 0 600 450" className="h-full w-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* Brazil outline */}
-              <path d="M300 20 L340 25 L360 40 L370 35 L390 45 L400 55 L410 50 L430 65 L440 70 L435 80 L450 85 L460 95 L455 105 L465 110 L480 130 L490 140 L485 150 L495 160 L490 170 L500 180 L510 190 L515 200 L520 210 L525 220 L520 230 L510 235 L500 245 L490 255 L480 260 L470 270 L460 275 L450 280 L440 285 L430 290 L420 295 L410 300 L400 305 L390 310 L380 315 L370 320 L360 325 L350 330 L340 335 L330 340 L320 345 L310 350 L300 355 L290 350 L280 345 L270 340 L260 335 L250 330 L240 325 L230 320 L220 315 L210 310 L200 305 L190 300 L180 295 L170 290 L160 285 L150 280 L140 275 L130 270 L120 265 L110 260 L100 250 L90 240 L80 230 L70 220 L65 210 L60 200 L55 190 L50 180 L45 170 L40 160 L35 150 L30 140 L25 130 L20 120 L15 110 L10 100 L12 90 L15 80 L20 70 L25 60 L30 50 L35 40 L40 35 L45 30 L50 25 L55 20 L60 15 L65 12 L70 10 L80 8 L90 6 L100 5 L110 6 L120 8 L130 10 L140 12 L150 15 L160 18 L170 20 L180 22 L190 25 L200 28 L210 30 L220 28 L230 25 L240 22 L250 20 L260 18 L270 16 L280 18 L290 19 L300 20Z"
-                stroke="#F26500" strokeWidth="1" fill="rgba(242,101,0,0.08)" />
-
-              {/* Pins */}
-              {pins.map((pin) => {
-                const isActivePin = activePin === pin.label
-                const isRegionMatch = !activeRegion || activeRegion === pin.region || activePin === pin.label
-                const dim = activeRegion && !isRegionMatch
-                const region = regions.find(r => r.name === pin.region)
-                const activeColor = region?.active ? "#F26500" : "#6B7280"
-
-                return (
-                  <g key={pin.label}>
-                    {/* Ripple */}
-                    {!dim && (
-                      <motion.circle
-                        cx={pin.x} cy={pin.y}
-                        r={4}
-                        fill={activeColor}
-                        opacity={0.15}
-                        animate={isActivePin ? { r: [4, 12, 4], opacity: [0.2, 0.03, 0.2] } : { r: [4, 8, 4], opacity: [0.15, 0.04, 0.15] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                    )}
-                    {/* Pin body with bounce */}
-                    <motion.g
-                      animate={dim ? { opacity: 0.15 } : { opacity: 1, y: [0, -2, 0] }}
-                      transition={dim ? {} : { duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                      style={{ cursor: "pointer" }}
-                      onClick={() => setActivePin(isActivePin ? null : pin.label)}
+        <div className="flex flex-col gap-8 lg:flex-row">
+          {/* Left — Leaflet Map */}
+          <div className="flex-[2]">
+            <div className="relative h-[350px] w-full overflow-hidden rounded border sm:h-[550px]" style={{ borderColor: "var(--line)" }}>
+              <MapContainer
+                center={[-15, -50]}
+                zoom={4.2}
+                scrollWheelZoom={true}
+                style={{ height: "100%", width: "100%", background: "#0d0e0d" }}
+                zoomControl={true}
+              >
+                <TileLayer
+                  attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+                  url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                />
+                {cities.map((city) => {
+                  const isDimmed = activeRegion && city.region !== activeRegion
+                  return (
+                    <Marker
+                      key={city.name}
+                      position={city.pos}
+                      icon={isDimmed ? L.divIcon({
+                        className: "",
+                        html: `<svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.2"><path d="M12 2L8 10l-6 2 6 2 2 6 2-6 6-2-6-2-2-8z" fill="#6B7280"/><circle cx="12" cy="10" r="2.5" fill="white"/></svg>`,
+                        iconSize: [20, 20],
+                        iconAnchor: [10, 10],
+                      }) : sulfurIcon}
                     >
-                      <path
-                        d="M0-12C-5-12-9-8-9-3c0 5 9 15 9 15s9-10 9-15c0-5-4-9-9-9zm0 4a2.5 2.5 0 110 5 2.5 2.5 0 010-5z"
-                        fill={isActivePin ? "#FBBF24" : activeColor}
-                        transform={`translate(${pin.x}, ${pin.y})`}
-                      />
-                    </motion.g>
-                    {/* Label */}
-                    <text
-                      x={pin.x + 11} y={pin.y - 3}
-                      fontSize="6" fill={dim ? "#555" : (isActivePin ? "#FBBF24" : "#f5f5f5")}
-                      opacity={dim ? 0.3 : 0.7}
-                      fontFamily="sans-serif"
-                      fontWeight={isActivePin ? "bold" : "normal"}
-                      style={{ cursor: "pointer" }}
-                      onClick={() => setActivePin(isActivePin ? null : pin.label)}
-                    >{pin.label}</text>
-                    {/* Tooltip on active pin */}
-                    {isActivePin && (
-                      <g>
-                        <rect
-                          x={pin.x - 40} y={pin.y - 38}
-                          width={80} height={28}
-                          rx={3}
-                          fill="#0d0e0d"
-                          stroke="#F26500"
-                          strokeWidth="0.5"
-                          opacity={0.95}
-                        />
-                        <text x={pin.x} y={pin.y - 27} fontSize="7" fill="#F26500" textAnchor="middle" fontWeight="bold" fontFamily="sans-serif">{pin.label}</text>
-                        <text x={pin.x} y={pin.y - 17} fontSize="6" fill="#f5f5f5" textAnchor="middle" opacity={0.7} fontFamily="sans-serif">{unitsByCity[pin.label] || "—"}</text>
-                        <text x={pin.x} y={pin.y - 10} fontSize="5" fill="#f5f5f5" textAnchor="middle" opacity={0.4} fontFamily="sans-serif">{pin.region}</text>
-                      </g>
-                    )}
-                  </g>
-                )
-              })}
-            </svg>
-
-            <div className="absolute bottom-2 right-3 flex items-center gap-2 text-[9px] text-white/30">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#F26500]" />
-              <span>{totalUnits} unidades em operação</span>
+                      <Popup>
+                        <div style={{ fontFamily: "sans-serif", lineHeight: 1.4 }}>
+                          <strong style={{ color: "#F26500" }}>{city.name}</strong>
+                          <br />
+                          <span style={{ fontSize: 12, color: "#888" }}>{city.units}</span>
+                          <br />
+                          <span style={{ fontSize: 10, color: "#666" }}>{city.region}</span>
+                        </div>
+                      </Popup>
+                    </Marker>
+                  )
+                })}
+              </MapContainer>
             </div>
           </div>
-        </div>
 
-        {/* Region cards */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {regions.map((r, i) => (
-            <motion.div
-              key={r.name}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.3 }}
-              onMouseEnter={() => setActiveRegion(r.name)}
-              onMouseLeave={() => setActiveRegion(null)}
-              onClick={() => setActiveRegion(activeRegion === r.name ? null : r.name)}
-              className={`border px-5 py-6 text-center transition-all cursor-pointer ${
-                activeRegion === r.name ? "bg-[#F26500]/10" : "bg-white/5"
-              } hover:-translate-y-0.5`}
-              style={{ borderColor: activeRegion === r.name ? "#F26500" : "var(--line)" }}
-            >
-              <div className="mb-2 flex items-center justify-center gap-2">
-                <span className={`h-2 w-2 rounded-full ${r.active ? "bg-[#22C55E] animate-pulse" : "bg-[#9CA3AF]"}`} />
-                <h3 className="font-display text-base font-black uppercase text-white">{r.name}</h3>
-              </div>
-              <div className="font-display text-3xl font-black text-[#F26500]">{r.count}</div>
-              <p className="mt-0.5 text-[10px] font-bold tracking-[0.12em] uppercase text-white/40">Unidades</p>
-              <p className="mt-2 text-[10px] leading-relaxed text-white/40 line-clamp-2">{r.cities}</p>
-            </motion.div>
-          ))}
-        </div>
+          {/* Right — region indicators */}
+          <div className="grid flex-1 grid-cols-1 gap-2 self-center sm:gap-4">
+            {regions.map((r, i) => (
+              <motion.div
+                key={r.name}
+                initial={{ opacity: 0, x: -15 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.3 }}
+                onMouseEnter={() => setActiveRegion(r.name)}
+                onMouseLeave={() => setActiveRegion(null)}
+                onClick={() => setActiveRegion(activeRegion === r.name ? null : r.name)}
+                className={`flex items-center justify-between border px-3 py-3 transition-all cursor-pointer sm:px-5 sm:py-5 ${
+                  activeRegion === r.name ? "bg-[#F26500]/10" : "bg-white/5"
+                } hover:-translate-y-0.5`}
+                style={{ borderColor: activeRegion === r.name ? "#F26500" : "var(--line)" }}
+              >
+                <div className="flex items-center gap-3">
+                  <span className={`h-2.5 w-2.5 rounded-full ${r.active ? "bg-[#22C55E]" : "bg-[#9CA3AF]"}`} />
+                  <h3 className="font-display text-base font-black uppercase text-white">{r.name}</h3>
+                </div>
+                <div className="text-right">
+                  <div className="font-display text-2xl font-black text-[#F26500]">{r.count}</div>
+                  <p className="text-[9px] font-bold tracking-[0.12em] uppercase text-white/40">Unidades</p>
+                </div>
+              </motion.div>
+            ))}
 
-        <div className="mt-6 text-center">
-          <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#F26500]/60">
-            <svg viewBox="0 0 24 24" className="mr-1 inline-block h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12,2 22,22 2,22" /></svg>
-            NOVA UNIDADE EM IMPLANTAÇÃO: BELÉM (PA) — PREVISÃO 2026
-            <svg viewBox="0 0 24 24" className="ml-1 inline-block h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12,2 22,22 2,22" /></svg>
-          </p>
+          </div>
+
         </div>
       </div>
     </Section>

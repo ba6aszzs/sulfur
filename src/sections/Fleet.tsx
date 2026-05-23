@@ -10,12 +10,12 @@ const trucks = [
   {
     type: "Refrigerado",
     desc: "Caminhões com controle de temperatura (-5°C a +10°C) para cargas perecíveis, fármacos e alimentos que exigem cadeia fria.",
-    img: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&h=600&fit=crop&auto=format",
+    img: "https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
   },
   {
     type: "Carga Perigosa",
     desc: "Frota certificada MOP para transporte de produtos químicos e inflamáveis. Equipamentos com rastreamento em tempo real e sensores de pressão/temperatura.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop&auto=format",
+    img: "https://images.pexels.com/photos/27099096/pexels-photo-27099096.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
   },
   {
     type: "Última Milha",
@@ -25,18 +25,18 @@ const trucks = [
   {
     type: "Bitrem / Carreta",
     desc: "Combinações de veículos de carga (CVC) para grandes volumes. Capacidade de até 40 toneladas com otimização de frete por eixo.",
-    img: "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=800&h=600&fit=crop&auto=format",
+    img: "https://images.pexels.com/photos/14005602/pexels-photo-14005602.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
   },
   {
     type: "Carga Frigorificada",
     desc: "Câmaras frigoríficas móveis com monitoramento IoT e geradores próprios. Ideal para cadeias logísticas complexas e longas distâncias.",
-    img: "https://images.unsplash.com/photo-1605030753481-bb38b08c384a?w=800&h=600&fit=crop&auto=format",
+    img: "https://images.pexels.com/photos/6563903/pexels-photo-6563903.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
   },
 ]
 
 export default function Fleet() {
   return (
-    <Section className="overflow-hidden border-y py-16 sm:py-20" style={{ borderColor: "var(--line)", backgroundColor: "var(--bg)" }} id="frota">
+    <Section className="overflow-hidden py-16 sm:py-20" style={{ backgroundColor: "var(--bg)" }} id="frota">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-10 text-center sm:mb-12">
           <span className="mb-1.5 inline-block text-[10px] font-bold tracking-[0.3em] uppercase text-[#F26500]">Frota</span>
@@ -54,12 +54,12 @@ export default function Fleet() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
-              className="group bg-white/5 border transition-all hover:-translate-y-1" style={{ borderColor: "var(--line)" }}
+              className="group bg-white/5 transition-all hover:-translate-y-1" style={{ border: "1px solid var(--line)" }}
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={t.img} alt={t.type} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
               </div>
-              <div className="flex items-start gap-2 border-t px-5 py-4" style={{ borderColor: "var(--line)" }}>
+              <div className="flex items-start gap-2 px-5 py-4" style={{ borderTop: "1px solid var(--line)" }}>
                 <svg viewBox="0 0 24 24" className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#F26500]" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12,2 22,22 2,22" /></svg>
                 <div>
                   <h3 className="font-display text-sm font-black uppercase text-white">{t.type}</h3>

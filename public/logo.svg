@@ -2,16 +2,34 @@
   <defs>
     <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#F26500"/>
-      <stop offset="100%" stop-color="#F26500"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
     </linearGradient>
   </defs>
-  <g transform="translate(30, 20)">
-    <rect x="16" y="30" width="68" height="40" rx="4" stroke="#F26500" stroke-width="2.5" fill="none"/>
-    <path d="M12 58 L50 22 L88 58" stroke="#F26500" stroke-width="2" fill="none" opacity="0.3"/>
-    <circle cx="50" cy="50" r="8" fill="#F26500"/>
-    <line x1="50" y1="50" x2="50" y2="30" stroke="#0d0e0d" stroke-width="2"/>
+
+  <!-- Hexagon brand mark -->
+  <g transform="translate(15, 15)">
+    <!-- Hexagon outline -->
+    <polygon points="80,0 110,44 80,88 30,88 0,44 30,0" stroke="#F26500" stroke-width="3" fill="rgba(242,101,0,0.06)"/>
+    <!-- Warehouse building -->
+    <rect x="24" y="28" width="62" height="44" rx="3" stroke="url(#sg)" stroke-width="2" fill="none"/>
+    <!-- Roof -->
+    <path d="M18 34 L55 12 L92 34" stroke="url(#sg)" stroke-width="2.2" fill="none" opacity="0.6"/>
+    <!-- Dock door -->
+    <rect x="54" y="48" width="18" height="24" rx="1.5" stroke="#F26500" stroke-width="1.8" fill="none"/>
+    <!-- Loading dock -->
+    <rect x="30" y="46" width="16" height="10" rx="1" stroke="#F26500" stroke-width="1.5" fill="none"/>
+    <!-- Floor -->
+    <line x1="20" y1="72" x2="90" y2="72" stroke="#F26500" stroke-width="1" opacity="0.3"/>
+    <!-- Small hexagon decor inside -->
+    <polygon points="70,15 80,21 80,29 70,35 60,29 60,21" stroke="#F26500" stroke-width="1.2" fill="none" opacity="0.2"/>
   </g>
-  <text x="115" y="70" font-family="'Maven Pro','Segoe UI',sans-serif" font-size="40" font-weight="900" fill="#0d0e0d" letter-spacing="5">SULFUR</text>
-  <text x="115" y="108" font-family="'Maven Pro','Segoe UI',sans-serif" font-size="14" font-weight="700" fill="#F26500" letter-spacing="6">LOGÍSTICA</text>
-  <line x1="115" y1="116" x2="440" y2="116" stroke="#F26500" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- SULFUR text -->
+  <text x="140" y="62" font-family="'Maven Pro','Segoe UI',sans-serif" font-size="46" font-weight="900" fill="white" letter-spacing="6">SULFUR</text>
+
+  <!-- LOGÍSTICA text -->
+  <text x="140" y="100" font-family="'Maven Pro','Segoe UI',sans-serif" font-size="16" font-weight="700" fill="#F26500" letter-spacing="7">LOGÍSTICA</text>
+
+  <!-- Separator line -->
+  <line x1="140" y1="112" x2="480" y2="112" stroke="url(#sg)" stroke-width="2" opacity="0.35"/>
 </svg>

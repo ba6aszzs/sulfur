@@ -61,7 +61,7 @@ export default function Tracking() {
 
         <div className="mx-auto max-w-4xl">
           {/* Tracking search input */}
-          <div className="mb-8 border p-4 sm:p-6" style={{ borderColor: "var(--line)", backgroundColor: "var(--bg)" }}>
+          <div>
             <label className="mb-3 block text-xs font-bold tracking-[0.15em] uppercase text-white/40">
               Rastreie sua remessa
             </label>
@@ -71,8 +71,8 @@ export default function Tracking() {
                 value={code}
                 onChange={(e) => { setCode(e.target.value); setSearched(false) }}
                 placeholder="Digite seu(s) número(s) de rastreamento"
-                className="min-h-12 flex-1 border bg-transparent px-4 text-sm text-white placeholder-white/30 outline-none transition-colors focus:border-[#F26500] sm:min-h-0 sm:py-3"
-                style={{ borderColor: code ? "#F26500" : "var(--line)" }}
+                className="min-h-12 flex-1 border bg-white/5 px-4 text-sm text-white placeholder-white/30 outline-none transition-colors focus:border-[#F26500] sm:min-h-0 sm:py-3"
+                style={{ borderColor: code ? "#F26500" : "rgba(255,255,255,0.15)" }}
                 onKeyDown={(e) => e.key === "Enter" && handleSearch()}
               />
               <button

@@ -18,7 +18,7 @@ export default function Footer() {
     <footer className="bg-[#0d0e0d] text-white/70">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
         <div className="mb-10">
-          <img src="/logo.svg" alt="SULFUR" className="h-10 w-auto brightness-0 invert" />
+          <img src="/favicon.svg" alt="SULFUR" className="h-10 w-auto" />
         </div>
 
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
+      <div>
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
           <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
             <div className="flex items-center gap-4">
@@ -62,7 +62,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-8 flex flex-col items-center gap-2 border-t border-white/10 pt-6 text-xs text-white/30 sm:flex-row sm:justify-between">
+          <div className="mt-8 flex flex-col items-center gap-2 pt-6 text-xs text-white/30 sm:flex-row sm:justify-between">
             <p>&copy; 2025 SULFUR Logística &middot; Todos os direitos reservados</p>
             <div className="flex gap-4">
               <span className="cursor-default transition-colors hover:text-white/60">Privacidade</span>

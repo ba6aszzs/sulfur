@@ -2,7 +2,7 @@ import Section from "@/components/Section"
 
 export default function About() {
   return (
-    <Section className="relative overflow-hidden border-y py-16 sm:py-20" style={{ borderColor: "var(--line)", backgroundColor: "var(--bg)" }} id="sobre">
+    <Section className="relative overflow-hidden py-16 sm:py-20" style={{ backgroundColor: "var(--bg)" }} id="sobre">
       {/* Hexagonal decor */}
       <div className="pointer-events-none absolute -left-16 top-1/2 h-40 w-40 -translate-y-1/2 opacity-[0.04]">
         <svg viewBox="0 0 100 87" className="h-full w-full text-[#F26500]" fill="currentColor">

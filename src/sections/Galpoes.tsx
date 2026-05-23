@@ -68,7 +68,7 @@ export default function Galpoes() {
   }, [totalPages])
 
   return (
-    <Section className="overflow-hidden border-y py-16 sm:py-20" style={{ borderColor: "var(--line)", backgroundColor: "var(--bg)" }} id="galpoes">
+    <Section className="overflow-hidden py-16 sm:py-20" style={{ backgroundColor: "var(--bg)" }} id="galpoes">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-10 text-center sm:mb-12">
           <span className="mb-1.5 inline-block text-[10px] font-bold tracking-[0.3em] uppercase text-[#F26500]">Galpões</span>
