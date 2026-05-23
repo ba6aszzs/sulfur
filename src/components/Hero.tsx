@@ -18,86 +18,73 @@ function Triangle({ className, color = "#F26500", style }: { className?: string;
   )
 }
 
-const traffic = [
-  // Each: y (%), size (px), type, speed (s), startX (% of vw)
-  // Lane 1
-  { y: "9%", size: 32, type: "hexagon", speed: 12, startX: 10 },
-  { y: "9%", size: 20, type: "triangle", speed: 8, startX: 45 },
-  { y: "9%", size: 28, type: "hexagon", speed: 14, startX: 75 },
-  // Lane 2
-  { y: "20%", size: 28, type: "hexagon", speed: 10, startX: 0 },
-  { y: "20%", size: 36, type: "hexagon", speed: 15, startX: 38 },
-  { y: "20%", size: 22, type: "triangle", speed: 9, startX: 70 },
-  // Lane 3
-  { y: "32%", size: 24, type: "triangle", speed: 7, startX: 15 },
-  { y: "32%", size: 34, type: "hexagon", speed: 13, startX: 50 },
-  { y: "32%", size: 26, type: "triangle", speed: 10, startX: 85 },
-  // Lane 4
-  { y: "44%", size: 38, type: "hexagon", speed: 16, startX: 5 },
-  { y: "44%", size: 24, type: "hexagon", speed: 11, startX: 42 },
-  { y: "44%", size: 30, type: "triangle", speed: 8, startX: 78 },
-  // Lane 5
-  { y: "55%", size: 30, type: "hexagon", speed: 12, startX: 20 },
-  { y: "55%", size: 22, type: "triangle", speed: 9, startX: 55 },
-  { y: "55%", size: 28, type: "triangle", speed: 6, startX: 88 },
-  // Lane 6
-  { y: "66%", size: 36, type: "hexagon", speed: 14, startX: 8 },
-  { y: "66%", size: 24, type: "hexagon", speed: 10, startX: 48 },
-  { y: "66%", size: 20, type: "triangle", speed: 7, startX: 82 },
-  // Lane 7
-  { y: "78%", size: 28, type: "triangle", speed: 11, startX: 12 },
-  { y: "78%", size: 34, type: "hexagon", speed: 15, startX: 52 },
-  { y: "78%", size: 22, type: "triangle", speed: 8, startX: 90 },
-  // Lane 8
-  { y: "90%", size: 32, type: "hexagon", speed: 13, startX: 3 },
-  { y: "90%", size: 20, type: "triangle", speed: 7, startX: 40 },
-  { y: "90%", size: 26, type: "hexagon", speed: 10, startX: 72 },
+const floats = [
+  { id: 1, top: "12%", left: "6%", size: 80, type: "hexagon", driftX: 12, driftY: 8, duration: 7, delay: 0 },
+  { id: 2, top: "65%", right: "10%", size: 64, type: "hexagon", driftX: -10, driftY: 6, duration: 9, delay: 1.5 },
+  { id: 3, top: "35%", right: "4%", size: 48, type: "hexagon", driftX: -8, driftY: 10, duration: 6, delay: 0.8 },
+  { id: 4, top: "72%", left: "12%", size: 44, type: "triangle", driftX: 10, driftY: -6, duration: 8, delay: 2 },
+  { id: 5, top: "22%", left: "52%", size: 36, type: "triangle", driftX: -6, driftY: 8, duration: 5, delay: 1 },
+  { id: 6, top: "82%", left: "45%", size: 56, type: "hexagon", driftX: 8, driftY: -8, duration: 10, delay: 0.5 },
+  { id: 7, top: "48%", left: "38%", size: 28, type: "triangle", driftX: -12, driftY: 4, duration: 6, delay: 2.5 },
+  { id: 8, top: "8%", right: "35%", size: 32, type: "hexagon", driftX: 6, driftY: -10, duration: 7, delay: 3 },
 ]
-
-const laneYs = [18, 30, 42, 54, 66, 78, 90]
 
 export default function Hero() {
   return (
     <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-[#0d0e0d]">
-      {/* Hexagonal pattern background */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.04]" style={{
+      {/* Background image — mountain road */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1600&h=1000&fit=crop&auto=format"
+          alt="Serra do Rio do Rastro"
+          className="h-full w-full object-cover"
+          style={{ filter: "blur(4px) brightness(0.35)" }}
+          loading="eager"
+        />
+      </div>
+
+      {/* Hexagonal pattern overlay */}
+      <div className="pointer-events-none absolute inset-0 z-[1] opacity-[0.06]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='52' viewBox='0 0 60 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='45,0 60,26 45,52 15,52 0,26 15,0' fill='none' stroke='%23F26500' stroke-width='1'/%3E%3C/svg%3E")`,
         backgroundSize: "60px 52px",
       }} />
 
-      {/* Highway traffic animation */}
-      <div className="pointer-events-none absolute inset-0 z-10">
-        {traffic.map((v, i) => (
-          <motion.div
-            key={i}
-            className="absolute"
-            style={{ top: v.y }}
-            initial={{ x: `${v.startX}vw` }}
-            animate={{ x: [`${v.startX}vw`, `-${100 - v.startX}vw`] }}
-            transition={{ duration: v.speed, repeat: Infinity, ease: "linear" }}
-          >
-            {v.type === "hexagon" ? (
-              <Hexagon size={v.size} color="#F26500" style={{ opacity: 0.08 }} />
-            ) : (
-              <Triangle color="#F26500" style={{ width: v.size, height: v.size * 0.866, opacity: 0.08 }} />
-            )}
-          </motion.div>
-        ))}
+      {/* Floating hexagons and triangles */}
+      <div className="pointer-events-none absolute inset-0 z-[2]">
+        {floats.map((f) => {
+          const style: React.CSSProperties = {
+            position: "absolute",
+            top: f.top,
+            left: f.left,
+            right: f.right,
+          }
+
+          return (
+            <motion.div
+              key={f.id}
+              style={style}
+              initial={{ x: 0, y: 0, rotate: 0 }}
+              animate={{
+                x: [0, f.driftX, 0, -f.driftX * 0.6, 0],
+                y: [0, f.driftY, -f.driftY * 0.5, f.driftY * 0.7, 0],
+                rotate: [0, 3, -2, 4, 0],
+              }}
+              transition={{
+                duration: f.duration,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: f.delay,
+              }}
+            >
+              {f.type === "hexagon" ? (
+                <Hexagon size={f.size} color="#F26500" style={{ opacity: 0.07 }} />
+              ) : (
+                <Triangle color="#F26500" style={{ width: f.size, height: f.size * 0.866, opacity: 0.07 }} />
+              )}
+            </motion.div>
+          )
+        })}
       </div>
-
-      {/* Lane dividers */}
-      {laneYs.map((y) => (
-        <div key={y} className="pointer-events-none absolute left-0 right-0 z-10 h-px" style={{ top: `${y}%` }}>
-          <div className="mx-auto h-full w-full" style={{
-            background: "repeating-linear-gradient(90deg, rgba(242,101,0,0.06) 0px, rgba(242,101,0,0.06) 20px, transparent 20px, transparent 50px)",
-            backgroundSize: "50px 1px",
-          }} />
-        </div>
-      ))}
-
-      {/* Road edges */}
-      <div className="pointer-events-none absolute top-0 bottom-0 left-0 z-10 w-px bg-gradient-to-b from-transparent via-[#F26500]/10 to-transparent" />
-      <div className="pointer-events-none absolute top-0 bottom-0 right-0 z-10 w-px bg-gradient-to-b from-transparent via-[#F26500]/10 to-transparent" />
 
       <div className="relative z-20 mx-auto w-full max-w-6xl px-4 sm:px-6">
         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}
